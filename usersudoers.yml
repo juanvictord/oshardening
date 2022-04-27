@@ -1,0 +1,14 @@
+ - hosts: netcool
+   become: yes
+   become_user: root
+
+   vars_prompt:
+     - name: Username
+       prompt: enter user id that you want to create sudoers file
+       private: no
+
+   tasks:
+     - name: Modify sudoers.d para dar privilegio a los usuarios con sudo
+       copy:
+         dest: /etc/sudoers.d/{{ Username | trim }}
+         content: '{{ Username | trim }} ALL=(ALL) NOPASSWD: ALL'

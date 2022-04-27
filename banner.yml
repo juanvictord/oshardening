@@ -1,0 +1,11 @@
+---
+ - hosts: netcool
+   become: yes
+   vars:
+    login_banner_text: "{{ lookup('file', 'mybanner.txt') }}"
+
+   tasks:
+     - name: Modify the System Login Banner - ensure correct banner
+       copy:
+         dest: /etc/issue
+         content: "{{ '\n' + login_banner_text + '\n' }}"

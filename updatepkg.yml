@@ -1,0 +1,9 @@
+---
+- name: UpdateAllPackages
+  hosts: mrzncvmcogrep
+
+  tasks:
+   - name: Upgrade all packages
+     yum:
+       name: '*'
+       state: latest

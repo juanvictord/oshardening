@@ -1,0 +1,11 @@
+---
+- hosts: mrzunovmdb02
+  #become: true
+
+  tasks:
+    - name: Upload ssh public key
+      authorized_key:
+         user: ansible
+         key: "{{ lookup('file', '/home/ansible/.ssh/id_rsa.pub') }}"
+         state: present
+

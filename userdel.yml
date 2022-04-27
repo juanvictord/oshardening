@@ -1,0 +1,12 @@
+---
+- name: Userdel
+  hosts: mrzunovmapp01
+  become: yes
+
+  tasks:
+    - name: Delete  the user 'X'
+      ansible.builtin.user:
+        name: ansible
+        state: absent
+        force: yes
+        remove: yes

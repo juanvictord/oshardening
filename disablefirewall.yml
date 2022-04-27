@@ -1,0 +1,11 @@
+---
+ - hosts: ussd
+   become: yes
+
+   tasks:
+     - name: Ensure firewalld service is disabled and stopped
+       systemd:
+         name: firewalld
+         state: stopped
+         enabled: no
+
